@@ -1,0 +1,8 @@
+/ref/
+/graphify-out/
+**/target/
+**/.env
+**/nexus-control-plane.yml
+**/nexus-control-plane.yaml
+.DS_Store
+Thumbs.db

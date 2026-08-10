@@ -1,0 +1,42 @@
+[product]
+name = "NexusFlow"
+version = "0.1.0-dev"
+
+[rustdesk_client]
+repository = "https://github.com/iincity/rustdesk.git"
+commit = "a2126fc56b1d1e5348dfc6333550059677f58b37"
+upstream_repository = "https://github.com/rustdesk/rustdesk.git"
+upstream_commit = "947cb3f17b673b55dfcbe95b318749f8b44a7f7a"
+
+[rustdesk_server]
+repository = "https://github.com/iincity/rustdesk-server.git"
+commit = "a9740e43e6f97ec30128782e03cd4ded06943eb7"
+upstream_repository = "https://github.com/rustdesk/rustdesk-server.git"
+upstream_commit = "a7736be5e40f85bfc141120dce587e836e5d4b80"
+
+[hbb_common]
+repository = "https://github.com/iincity/hbb_common.git"
+commit = "69cea8dafee147848ae88702029f4bf7df7224c3"
+
+[rustdesk_server_pro]
+repository = "https://github.com/iincity/rustdesk-server-pro.git"
+commit = "2494b75b802d6008b6d7c877acf8b39a84a9fb8c"
+
+[nexus_platform]
+repository = "https://github.com/iincity/nexus-platform.git"
+commit = "995d728ff9e882fb39fd5e008b89f2a8177b8b46"
+
+[nexus_tunnel]
+repository = "https://github.com/iincity/nexus-tunnel.git"
+commit = "15a15504fa4a4b789b3b11b450782affe793f8e1"
+protocol_version = "0"
+
+[nexus_control_plane]
+version = "0.1.0"
+commit = "995d728ff9e882fb39fd5e008b89f2a8177b8b46"
+api_version = "v1-compat"
+
+[compatibility]
+min_client_version = "pending"
+min_tunnel_protocol = "0"
+min_control_plane_api = "v1-compat"

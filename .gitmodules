@@ -1,0 +1,15 @@
+[submodule "nexus-rustdesk"]
+	path = components/nexus-rustdesk
+	url = https://github.com/iincity/rustdesk.git
+[submodule "rustdesk-server"]
+	path = components/rustdesk-server
+	url = https://github.com/iincity/rustdesk-server.git
+[submodule "rustdesk-server-pro"]
+	path = components/rustdesk-server-pro
+	url = https://github.com/iincity/rustdesk-server-pro.git
+[submodule "nexus-platform"]
+	path = components/nexus-platform
+	url = https://github.com/iincity/nexus-platform.git
+[submodule "nexus-tunnel"]
+	path = components/nexus-tunnel
+	url = https://github.com/iincity/nexus-tunnel.git
