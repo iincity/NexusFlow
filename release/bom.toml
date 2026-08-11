@@ -4,7 +4,7 @@ version = "0.1.0-dev"
 
 [rustdesk_client]
 repository = "https://github.com/iincity/rustdesk.git"
-commit = "b86974d404a9771f184f6b97d8ea11396c9bf127"
+commit = "b14ed478864306fdecbd272bac58f2f3db1e7889"
 upstream_repository = "https://github.com/rustdesk/rustdesk.git"
 upstream_commit = "947cb3f17b673b55dfcbe95b318749f8b44a7f7a"
 

@@ -97,3 +97,4 @@ M1 → M2 → M3 → M4 → M5 → M6
 - M0 已完成，见根提交与 `release/bom.toml`。
 - 当前正在实施 M1：先完成共享 Tunnel 模型和确定性状态机，再把客户端骨架改为依赖该稳定接口。
 - 2026-08-11：`nexus-tunnel` 已落地版本化 `TunnelDesiredState`、配置摘要校验、状态机与单元测试；`nexus-rustdesk/libs/nexus_client` 已改为复用 `nexus-tunnel-client` 固定 Git revision，并验证本地运行时状态可跟随共享 Tunnel 状态机。
+- 2026-08-11：`nexus-rustdesk/src/server.rs` 已在 RustDesk 原生 `start_server()` 生命周期中 feature-gated 挂载 `NexusRuntime`；`src/nexus.rs` 现承担唯一适配点职责，并提供最小 `_nexus` 版本化请求/响应 DTO 与状态查询处理入口。
