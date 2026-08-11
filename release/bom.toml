@@ -4,7 +4,7 @@ version = "0.1.0-dev"
 
 [rustdesk_client]
 repository = "https://github.com/iincity/rustdesk.git"
-commit = "a2126fc56b1d1e5348dfc6333550059677f58b37"
+commit = "b86974d404a9771f184f6b97d8ea11396c9bf127"
 upstream_repository = "https://github.com/rustdesk/rustdesk.git"
 upstream_commit = "947cb3f17b673b55dfcbe95b318749f8b44a7f7a"
 
@@ -28,7 +28,7 @@ commit = "995d728ff9e882fb39fd5e008b89f2a8177b8b46"
 
 [nexus_tunnel]
 repository = "https://github.com/iincity/nexus-tunnel.git"
-commit = "15a15504fa4a4b789b3b11b450782affe793f8e1"
+commit = "75bc36d0a5a27c2cb1cba9feaa8771806f7924ae"
 protocol_version = "0"
 
 [nexus_control_plane]
