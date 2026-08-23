@@ -4,19 +4,19 @@ version = "0.1.0-dev"
 
 [rustdesk_client]
 repository = "https://github.com/iincity/rustdesk.git"
-commit = "747fb18b0b187368ad58e74995cfc49570f28015"
+commit = "aa01d128efac7fa216eda4425f3b9ab5f22b2ed5"
 upstream_repository = "https://github.com/rustdesk/rustdesk.git"
 upstream_commit = "947cb3f17b673b55dfcbe95b318749f8b44a7f7a"
 
 [rustdesk_server]
 repository = "https://github.com/iincity/rustdesk-server.git"
-commit = "05908e55665fd41eaaa2069692f42d1f11cdaa10"
+commit = "33e2eaf8384d4fa041279f6f6c4d3e772d40d83f"
 upstream_repository = "https://github.com/rustdesk/rustdesk-server.git"
 upstream_commit = "a7736be5e40f85bfc141120dce587e836e5d4b80"
 
 [hbb_common]
 repository = "https://github.com/iincity/hbb_common.git"
-commit = "df6a7db4d807780a55fe1c501d402d245a4c0c5e"
+commit = "fced8ddfb2534b1b1d547171ce5a1bdd1aa377be"
 
 [rustdesk_server_pro]
 repository = "https://github.com/iincity/rustdesk-server-pro.git"
