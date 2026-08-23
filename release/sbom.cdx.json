@@ -5,9 +5,9 @@
   "metadata": {
     "tools": [
       {
+        "name": "generate-sbom.ps1",
         "version": "1",
-        "vendor": "NexusFlow",
-        "name": "generate-sbom.ps1"
+        "vendor": "NexusFlow"
       }
     ]
   },
@@ -21,7 +21,7 @@
     {
       "type": "application",
       "name": "nexus-rustdesk",
-      "version": "747fb18b0b187368ad58e74995cfc49570f28015",
+      "version": "aa01d128efac7fa216eda4425f3b9ab5f22b2ed5",
       "bom-ref": "git:components/nexus-rustdesk"
     },
     {
@@ -43,8 +43,8 @@
       "bom-ref": "artifact:rustdesk-pro-web-client",
       "hashes": [
         {
-          "content": "fe84fc807efadc6f617c5c9ce41be656c471f39f837ab0ae66815af9f099602c",
-          "alg": "SHA-256"
+          "alg": "SHA-256",
+          "content": "fe84fc807efadc6f617c5c9ce41be656c471f39f837ab0ae66815af9f099602c"
         }
       ],
       "externalReferences": [
@@ -57,7 +57,7 @@
     {
       "type": "application",
       "name": "rustdesk-server",
-      "version": "05908e55665fd41eaaa2069692f42d1f11cdaa10",
+      "version": "33e2eaf8384d4fa041279f6f6c4d3e772d40d83f",
       "bom-ref": "git:components/rustdesk-server"
     },
     {
