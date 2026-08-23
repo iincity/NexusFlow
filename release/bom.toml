@@ -35,7 +35,7 @@ websocket_port = 21118
 
 [nexus_platform]
 repository = "https://github.com/iincity/nexus-platform.git"
-commit = "37cb5836e18e8a5a5cafc487beb8504779930533"
+commit = "a040beeee4d2cf5c7b62c0b4cec292ffde44b05d"
 
 [nexus_tunnel]
 repository = "https://github.com/iincity/nexus-tunnel.git"
@@ -44,14 +44,14 @@ protocol_version = "0"
 
 [nexus_control_plane]
 version = "0.1.0"
-commit = "37cb5836e18e8a5a5cafc487beb8504779930533"
+commit = "a040beeee4d2cf5c7b62c0b4cec292ffde44b05d"
 api_version = "v1-compat"
 
 [nexus_web_relay]
 source = "components/nexus-platform/control-plane/src/bin/nexus-web-relay.rs"
 dockerfile = "deploy/docker/nexus-web-relay.Dockerfile"
 kubernetes_manifest = "deploy/kubernetes/nexus-web-relay.yaml"
-commit = "37cb5836e18e8a5a5cafc487beb8504779930533"
+commit = "a040beeee4d2cf5c7b62c0b4cec292ffde44b05d"
 
 [compatibility]
 min_client_version = "pending"
