@@ -1,0 +1,99 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nexus-control-plane-migrations
+  labels:
+    app.kubernetes.io/name: nexus-control-plane
+    app.kubernetes.io/component: migration
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nexus-control-plane
+        app.kubernetes.io/component: migration
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrations
+          image: ghcr.io/example/nexus-control-plane:<immutable-tag>
+          env:
+            - name: NEXUS_APPLY_MIGRATIONS
+              value: "true"
+            - name: NEXUS_MIGRATIONS_ONLY
+              value: "true"
+            - name: MIGRATION_DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-control-plane-database
+                  key: migration-database-url
+            # The binary parses the normal configuration as well; keep all
+            # credentials in the referenced Secret and never in this manifest.
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-control-plane-database
+                  key: runtime-database-url
+            - name: HANDY_MASTER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-control-plane-runtime
+                  key: handy-master-secret
+          envFrom:
+            - secretRef:
+                name: nexus-control-plane-runtime
+                optional: true
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus-control-plane
+  labels:
+    app.kubernetes.io/name: nexus-control-plane
+    app.kubernetes.io/component: runtime
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nexus-control-plane
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nexus-control-plane
+    spec:
+      containers:
+        - name: control-plane
+          image: ghcr.io/example/nexus-control-plane:<immutable-tag>
+          env:
+            - name: NEXUS_APPLY_MIGRATIONS
+              value: "false"
+            - name: NEXUS_MIGRATIONS_ONLY
+              value: "false"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-control-plane-database
+                  key: runtime-database-url
+            - name: HANDY_MASTER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-control-plane-runtime
+                  key: handy-master-secret
+          envFrom:
+            - secretRef:
+                name: nexus-control-plane-runtime
+                optional: true
+          ports:
+            - name: http
+              containerPort: 3005
+            - name: metrics
+              containerPort: 9090
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http

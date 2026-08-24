@@ -1,0 +1,11 @@
+# Build contexts are rooted at NexusFlow for cross-component path dependencies.
+# Ignore generated state without excluding fixed source submodules.
+**/target/
+**/target-*/
+**/node_modules/
+.tmp/
+.omx/
+ref/
+.git/
+.env
+.env.*

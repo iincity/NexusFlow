@@ -1,0 +1,17 @@
+services:
+  nexus-control-plane-migrations:
+    build:
+      context: ../..
+      dockerfile: components/nexus-platform/control-plane/Dockerfile
+    image: nexus-control-plane:local
+    restart: "no"
+    env_file:
+      - ../../components/nexus-platform/control-plane/.env
+    environment:
+      NEXUS_APPLY_MIGRATIONS: "true"
+      NEXUS_MIGRATIONS_ONLY: "true"
+      # Use a direct/session DDL connection. Never reuse the runtime pooler.
+      MIGRATION_DATABASE_URL: ${MIGRATION_DATABASE_URL:?set MIGRATION_DATABASE_URL}
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL}
+    volumes:
+      - ../../components/nexus-platform/control-plane/nexus-control-plane.yml:/app/config/nexus-control-plane.yml:ro

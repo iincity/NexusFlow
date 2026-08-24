@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus-web-relay
+  labels:
+    app.kubernetes.io/name: nexus-web-relay
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nexus-web-relay
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nexus-web-relay
+    spec:
+      containers:
+        - name: web-relay
+          image: ghcr.io/example/nexus-web-relay:<immutable-tag>
+          env:
+            - name: NEXUS_WEB_RELAY_BIND
+              value: 0.0.0.0:3010
+            - name: NEXUS_WEB_RELAY_CONTROL_PLANE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-web-relay
+                  key: control-plane-url
+            - name: NEXUS_WEB_RELAY_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-web-relay
+                  key: control-plane-token
+            - name: NEXUS_WEB_RELAY_HBBS_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-web-relay
+                  key: hbbs-websocket-url
+            - name: NEXUS_WEB_RELAY_HBBR_URL
+              valueFrom:
+                secretKeyRef:
+                  name: nexus-web-relay
+                  key: hbbr-websocket-url
+          ports:
+            - name: http
+              containerPort: 3010
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop: ["ALL"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexus-web-relay
+spec:
+  selector:
+    app.kubernetes.io/name: nexus-web-relay
+  ports:
+    - name: http
+      port: 3010
+      targetPort: http
