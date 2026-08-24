@@ -65,5 +65,6 @@ $document = [ordered]@{
 
 $parent = Split-Path -Parent $Output
 New-Item -ItemType Directory -Force -Path $parent | Out-Null
-$document | ConvertTo-Json -Depth 8 | Set-Content -Encoding utf8 -Path $Output
+$json = ($document | ConvertTo-Json -Depth 8) -replace "`r`n", "`n"
+[System.IO.File]::WriteAllText($Output, "$json`n", [System.Text.UTF8Encoding]::new($false))
 Write-Host "SBOM generated: $Output ($($components.Count) components)"

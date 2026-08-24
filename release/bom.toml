@@ -4,19 +4,19 @@ version = "0.1.0-dev"
 
 [rustdesk_client]
 repository = "https://github.com/iincity/rustdesk.git"
-commit = "aa01d128efac7fa216eda4425f3b9ab5f22b2ed5"
+commit = "aa3ef2585b7e927742ccad8a8de6e21399ccc9ae"
 upstream_repository = "https://github.com/rustdesk/rustdesk.git"
 upstream_commit = "947cb3f17b673b55dfcbe95b318749f8b44a7f7a"
 
 [rustdesk_server]
 repository = "https://github.com/iincity/rustdesk-server.git"
-commit = "33e2eaf8384d4fa041279f6f6c4d3e772d40d83f"
+commit = "efedf10c81595748811df9797ff6e0827de62795"
 upstream_repository = "https://github.com/rustdesk/rustdesk-server.git"
 upstream_commit = "a7736be5e40f85bfc141120dce587e836e5d4b80"
 
 [hbb_common]
 repository = "https://github.com/iincity/hbb_common.git"
-commit = "fced8ddfb2534b1b1d547171ce5a1bdd1aa377be"
+commit = "a3cb157484b4a77426cb4e2e43e3b03bd1a51f8b"
 
 [rustdesk_server_pro]
 repository = "https://github.com/iincity/rustdesk-server-pro.git"
@@ -35,7 +35,7 @@ websocket_port = 21118
 
 [nexus_platform]
 repository = "https://github.com/iincity/nexus-platform.git"
-commit = "29a6adf6fd469b25a54b0b7c912115f188ce8a16"
+commit = "cbd848093b038879e6bbd2ad95d5c5e6bec4d51a"
 
 [nexus_tunnel]
 repository = "https://github.com/iincity/nexus-tunnel.git"
@@ -44,14 +44,14 @@ protocol_version = "0"
 
 [nexus_control_plane]
 version = "0.1.0"
-commit = "29a6adf6fd469b25a54b0b7c912115f188ce8a16"
+commit = "cbd848093b038879e6bbd2ad95d5c5e6bec4d51a"
 api_version = "v1-compat"
 
 [nexus_web_relay]
 source = "components/nexus-platform/control-plane/src/bin/nexus-web-relay.rs"
 dockerfile = "deploy/docker/nexus-web-relay.Dockerfile"
 kubernetes_manifest = "deploy/kubernetes/nexus-web-relay.yaml"
-commit = "29a6adf6fd469b25a54b0b7c912115f188ce8a16"
+commit = "cbd848093b038879e6bbd2ad95d5c5e6bec4d51a"
 
 [compatibility]
 min_client_version = "pending"
