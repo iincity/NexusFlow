@@ -5,9 +5,9 @@
   "metadata": {
     "tools": [
       {
-        "vendor": "NexusFlow",
+        "name": "generate-sbom.ps1",
         "version": "1",
-        "name": "generate-sbom.ps1"
+        "vendor": "NexusFlow"
       }
     ]
   },
@@ -21,7 +21,7 @@
     {
       "type": "application",
       "name": "nexus-rustdesk",
-      "version": "58ba0a9b5a12d0371fe8c3f6bc0503afb0090e71",
+      "version": "58ba0a9b5e21de2f10e753b10d5cbc5c3cdbc206",
       "bom-ref": "git:components/nexus-rustdesk"
     },
     {
