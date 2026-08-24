@@ -187,7 +187,9 @@ jobs:
           test "$actual_web_client_version" = "$web_client_version"
 
   supabase-gate:
-    if: ${{ github.event_name == 'push' && secrets.DATABASE_URL != '' && secrets.MIGRATION_DATABASE_URL != '' && secrets.SUPABASE_URL != '' && secrets.SUPABASE_SERVICE_ROLE_KEY != '' && secrets.SUPABASE_ANON_KEY != '' && secrets.NEXUS_TENANT_A_ID != '' && secrets.NEXUS_TENANT_B_ID != '' && secrets.NEXUS_TENANT_A_ACCESS_TOKEN != '' && secrets.NEXUS_TENANT_B_ACCESS_TOKEN != '' && secrets.NEXUS_REMOVED_MEMBER_TENANT_ID != '' && secrets.NEXUS_REMOVED_MEMBER_ACCESS_TOKEN != '' && secrets.NEXUS_REVOKED_ACCESS_TOKEN != '' && secrets.NEXUS_STORAGE_OBJECT_KEY != '' && secrets.NEXUS_STORAGE_OBJECT_SHA256 != '' && secrets.NEXUS_CONTROL_PLANE_URL != '' && secrets.NEXUS_REVOKED_FILE_GRANT_ID != '' }}
+    # GitHub does not allow `secrets` in a job-level condition. An operator
+    # enables this protected gate only after configuring its required secrets.
+    if: ${{ github.event_name == 'push' && vars.ENABLE_SUPABASE_GATE == 'true' }}
     runs-on: ubuntu-latest
     environment: supabase-production
     steps:
