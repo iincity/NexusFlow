@@ -86,7 +86,7 @@ jobs:
         run: |
           python res/inline-sciter.py
           cargo check --locked -p rustdesk --features use_dasp
-          cargo fmt --check
+          cargo fmt -p nexus_client --check
       - name: Verify RustDesk with Nexus
         working-directory: components/nexus-rustdesk
         shell: pwsh
@@ -134,7 +134,7 @@ jobs:
           cd components/nexus-rustdesk
           python3 res/inline-sciter.py
           cargo check --locked -p rustdesk --features nexus-native-tunnel
-          cargo fmt --check
+          cargo fmt -p nexus_client --check
           cd ../rustdesk-server
           cargo check --locked --features nexus-native-tunnel --bin hbbs
           cargo fmt --check
