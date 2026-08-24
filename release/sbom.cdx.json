@@ -27,7 +27,7 @@
     {
       "type": "application",
       "name": "nexus-tunnel",
-      "version": "b0a97a4046c12bc9dae50b9a7ce8b0723b3a7360",
+      "version": "e2faa3ab06db86fb7377717c08032c5d5c50082e",
       "bom-ref": "git:components/nexus-tunnel"
     },
     {

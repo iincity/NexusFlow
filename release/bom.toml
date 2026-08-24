@@ -39,7 +39,7 @@ commit = "cbd848093b038879e6bbd2ad95d5c5e6bec4d51a"
 
 [nexus_tunnel]
 repository = "https://github.com/iincity/nexus-tunnel.git"
-commit = "b0a97a4046c12bc9dae50b9a7ce8b0723b3a7360"
+commit = "e2faa3ab06db86fb7377717c08032c5d5c50082e"
 protocol_version = "0"
 
 [nexus_control_plane]
