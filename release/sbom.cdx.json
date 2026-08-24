@@ -15,7 +15,7 @@
     {
       "type": "application",
       "name": "nexus-platform",
-      "version": "9c0fb3144ee5030249fbd71dd003e4aa6af57e30",
+      "version": "7a60cdfb8b423d95abcb78f9dc32caf7a77eeaa1",
       "bom-ref": "git:components/nexus-platform"
     },
     {
@@ -33,7 +33,7 @@
     {
       "type": "application",
       "name": "nexus-web-relay",
-      "version": "9c0fb3144ee5030249fbd71dd003e4aa6af57e30",
+      "version": "7a60cdfb8b423d95abcb78f9dc32caf7a77eeaa1",
       "bom-ref": "artifact:nexus-web-relay"
     },
     {
