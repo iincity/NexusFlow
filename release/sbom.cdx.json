@@ -5,9 +5,9 @@
   "metadata": {
     "tools": [
       {
+        "vendor": "NexusFlow",
         "name": "generate-sbom.ps1",
-        "version": "1",
-        "vendor": "NexusFlow"
+        "version": "1"
       }
     ]
   },
@@ -43,8 +43,8 @@
       "bom-ref": "artifact:rustdesk-pro-web-client",
       "hashes": [
         {
-          "content": "fe84fc807efadc6f617c5c9ce41be656c471f39f837ab0ae66815af9f099602c",
-          "alg": "SHA-256"
+          "alg": "SHA-256",
+          "content": "fe84fc807efadc6f617c5c9ce41be656c471f39f837ab0ae66815af9f099602c"
         }
       ],
       "externalReferences": [

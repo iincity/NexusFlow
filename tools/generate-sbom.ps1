@@ -31,7 +31,9 @@ function Get-CargoPackages([string]$Manifest) {
             version = $_.version
             'bom-ref' = "cargo:$($_.name)@$($_.version)"
         }
-        if ($_.repository) { $component.'externalReferences' = @(@{ type = 'vcs'; url = $_.repository }) }
+        if ($_.repository) {
+            $component.'externalReferences' = @([ordered]@{ type = 'vcs'; url = $_.repository })
+        }
         [pscustomobject]$component
     })
 }
@@ -46,8 +48,8 @@ $components += @(
     [pscustomobject]@{ type = 'application'; name = 'rustdesk-server-pro'; version = (Get-BomCommit 'rustdesk_server_pro'); 'bom-ref' = 'git:components/rustdesk-server-pro' },
     [pscustomobject]@{
         type = 'application'; name = 'rustdesk-pro-web-client'; version = (Get-BomValue 'rustdesk_pro_web_client' 'version'); 'bom-ref' = 'artifact:rustdesk-pro-web-client'
-        hashes = @(@{ alg = 'SHA-256'; content = (Get-BomValue 'rustdesk_pro_web_client' 'sha256') })
-        externalReferences = @(@{ type = 'distribution'; url = (Get-BomValue 'rustdesk_pro_web_client' 'archive_url') })
+        hashes = @([ordered]@{ alg = 'SHA-256'; content = (Get-BomValue 'rustdesk_pro_web_client' 'sha256') })
+        externalReferences = @([ordered]@{ type = 'distribution'; url = (Get-BomValue 'rustdesk_pro_web_client' 'archive_url') })
     },
     [pscustomobject]@{ type = 'application'; name = 'nexus-platform'; version = (Get-BomCommit 'nexus_platform'); 'bom-ref' = 'git:components/nexus-platform' },
     [pscustomobject]@{ type = 'application'; name = 'nexus-web-relay'; version = (Get-BomCommit 'nexus_web_relay'); 'bom-ref' = 'artifact:nexus-web-relay' },
@@ -59,7 +61,9 @@ $document = [ordered]@{
     bomFormat = 'CycloneDX'
     specVersion = '1.5'
     version = 1
-    metadata = @{ tools = @(@{ vendor = 'NexusFlow'; name = 'generate-sbom.ps1'; version = '1' }) }
+    metadata = [ordered]@{
+        tools = @([ordered]@{ vendor = 'NexusFlow'; name = 'generate-sbom.ps1'; version = '1' })
+    }
     components = @($components | Sort-Object type, name, version)
 }
 
