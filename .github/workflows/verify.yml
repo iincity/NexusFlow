@@ -83,17 +83,27 @@ jobs:
       - name: Verify RustDesk without Nexus
         working-directory: components/nexus-rustdesk
         shell: pwsh
-        run: cargo check --locked -p rustdesk --features use_dasp
+        run: |
+          python res/inline-sciter.py
+          cargo check --locked -p rustdesk --features use_dasp
+          cargo fmt --check
       - name: Verify RustDesk with Nexus
         working-directory: components/nexus-rustdesk
         shell: pwsh
         run: |
+          python res/inline-sciter.py
           cargo check --locked -p rustdesk --features nexus
           cargo check --locked -p rustdesk --features nexus-native-tunnel
           cargo test --locked -p nexus_client -- --test-threads=1
           $rustdeskForbidden = cargo tree --locked -e normal,build -p rustdesk --features nexus-native-tunnel | Select-String 'nexus-tunnel|frp-rs|nexus-frp-runtime'
           if ($LASTEXITCODE -ne 0) { throw 'RustDesk native dependency tree failed' }
           if ($rustdeskForbidden) { $rustdeskForbidden; throw 'RustDesk native build links retired Tunnel/FRP runtime' }
+      - name: Verify RustDesk Server formatting
+        working-directory: components/rustdesk-server
+        shell: pwsh
+        run: |
+          cargo check --locked --features nexus-native-tunnel --bin hbbs
+          cargo fmt --check
       - name: Verify control-plane native dependency boundary
         working-directory: components/nexus-platform/control-plane
         shell: pwsh
@@ -121,6 +131,13 @@ jobs:
           cargo test --locked --manifest-path components/nexus-tunnel/Cargo.toml --workspace -- --test-threads=1
           cargo test --locked --manifest-path components/nexus-tunnel/Cargo.toml -p nexus-tunnel-server --features test-loopback --test relay_process_e2e -- --test-threads=1
           cargo test --locked --manifest-path components/nexus-rustdesk/libs/nexus_client/Cargo.toml -- --test-threads=1
+          cd components/nexus-rustdesk
+          python3 res/inline-sciter.py
+          cargo check --locked -p rustdesk --features nexus-native-tunnel
+          cargo fmt --check
+          cd ../rustdesk-server
+          cargo check --locked --features nexus-native-tunnel --bin hbbs
+          cargo fmt --check
       - name: Verify hbbs native registration projection isolation
         working-directory: components/rustdesk-server
         shell: bash

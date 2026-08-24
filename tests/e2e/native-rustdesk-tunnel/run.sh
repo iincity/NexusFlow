@@ -188,6 +188,10 @@ HBBR_BIN="$SERVER_TARGET/debug/hbbr"
 if [[ "$MATRIX" != smoke ]]; then
   echo "[native-e2e] building RustDesk Client Host/Gateway binaries"
   if [[ "${NEXUS_E2E_SKIP_BUILD:-0}" != 1 && ( -z "$HOST_BIN_OVERRIDE" || -z "$GATEWAY_BIN_OVERRIDE" ) ]]; then
+    (
+      cd "$ROOT/components/nexus-rustdesk"
+      python3 res/inline-sciter.py
+    )
     CARGO_TARGET_DIR="$CLIENT_TARGET" cargo build --locked --manifest-path "$ROOT/components/nexus-rustdesk/Cargo.toml" \
       --no-default-features --bin nexus-e2e-host --bin nexus-e2e-gateway \
       --features nexus-e2e-host,nexus-e2e-gateway,linux-pkg-config,use_dasp \
